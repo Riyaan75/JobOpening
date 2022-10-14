@@ -46,10 +46,10 @@ app.post("/register", async (req, res) => {
     try {
         //const password =req.body.password;
         const registerUser = {
-            name:"nick",
-            email:"ajfl@fdkafj",
-            username:"dfajlk",
-            password:"afdjlkf"
+            name,
+            email,
+            username,
+            password
         };
         const newUser = new Register(registerUser);
         await newUser.save();
