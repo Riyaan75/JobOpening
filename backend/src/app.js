@@ -23,7 +23,7 @@ const port = process.env.PORT || 3000;
 //console.log(path.join(__dirname,"../../frontend/pages-register.html"));
 
 app.get("/", (req ,res) =>{
-    res.render("index");
+    res.render("login");
 });
 
 
@@ -33,7 +33,7 @@ app.get("/register", (req,res) =>{
 });
 
 app.get("/login",(req,res) =>{
-    res.render("login");
+    res.render("index");
 });
 //new user crud
 app.post("/register", async (req,res) =>{
