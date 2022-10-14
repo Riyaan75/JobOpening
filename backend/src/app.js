@@ -26,13 +26,6 @@ hbs.registerPartials(partials_path);
 //console.log(path.join(__dirname,"../../frontend/pages-register.html"));
 
 app.get("/", async (req, res) => {
-    const registerUser = new Register({
-        name:"nick",
-        email:"ajfl@fdkafj",
-        username:"dfajlk",
-        password:"afdjlkf"
-    });
-    await registerUser.save();
     res.render("index");
 });
 
