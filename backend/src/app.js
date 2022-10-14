@@ -33,7 +33,7 @@ app.get("/register", (req,res) =>{
 });
 
 app.get("/login",(req,res) =>{
-    res.render("index");
+    res.render("login");
 });
 //new user crud
 app.post("/register", async (req,res) =>{
@@ -46,7 +46,7 @@ app.post("/register", async (req,res) =>{
             password: req.body.password
         });
         const registered = await registerUser.save();
-        res.status(201).render("index");
+        res.status(201).render("login");
 
     }
     catch(e){
@@ -61,7 +61,7 @@ app.post("/login", async(req,res) =>{
         const password = req.body.password;
 
         const useremail = await Register.findOne({email:email});
-        if(useremail.password === password){
+        if(useremail.password == password){
             res.status(201).render("index");
         }
         else{
