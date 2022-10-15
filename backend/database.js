@@ -1,14 +1,24 @@
-const mongo = require("mongodb").MongoClient;
-let client;
-async function mongoConnect() {
+const mongo = require("mongodb");
+const uri = process.env["MONGO_DB_URI"];
 
-    if (client) {
-        return client
-    }
-    console.log("Connecting to Database....")
-    client = await mongo.connect("mongodb+srv://riyaan75:ayshaRH75@cluster0.0emyic0.mongodb.net/jobOpening")
-    console.log("Connected to MongoDB")
+async function connect() {
+  let client;
+  if (client) {
+    console.log("Reconnecting to MongoDB");
+    return this.client;
+  }
+  client = new mongo.MongoClient(uri);
+  try {
+    console.log("Connecting to MongoDB Cluster....");
+
+    await client.connect();
+    console.log("Connected to MongoDB Cluster");
     return client
+  } catch (e) {
+    throw e;
+  }
 }
 
-module.exports = { mongoConnect }
+module.exports = { connect };
+
+ 

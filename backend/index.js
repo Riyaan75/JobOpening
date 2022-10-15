@@ -5,16 +5,29 @@ const app = express();
 const hbs = require("hbs");
 // const DB = `mongodb://localhost:27017/jobopening`
 require("./database");
-const Register = require("./db/models/register");
+//const Register = require("./db/model/register");
 // const Register = require("./models/register");
+const User = require("./db/model/user");
+
+const userRouter = require("./api/login");
+const jobRouter = require("./api/listing")
+const interestedApplicantRouter = require("./api/applicant")
+
+
+app.use("/users", userRouter)
+app.use("/jobs", jobRouter)
+app.use('/applicants', interestedApplicantRouter)
+
 
 const exp = require('constants');
+const { findUserWithEmail } = require('./db/model/user');
+const { emit } = require('process');
 const port = process.env.PORT || 3000;
 // const register = require('../src/models/register');
 
-const static_path = path.join(__dirname, "../../frontend");
-const template_path = path.join(__dirname, "../../frontend/templates/views");
-const partials_path = path.join(__dirname, "../../frontend/templates/partials");
+const static_path = path.join(__dirname, "../frontend");
+const template_path = path.join(__dirname, "../frontend/templates/views");
+const partials_path = path.join(__dirname, "../frontend/templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -42,16 +55,12 @@ app.get("/login",(req,res) =>{
 //new user crud
 app.post("/register", async (req, res) => {
     console.log(req.body)
-    const { name, email, username, password } = req.body;
+    const { name, email, username, password,isTerraformer } = req.body;
     try {
         //const password =req.body.password;
-        const registerUser = new Register({
-            name: req.body.name,
-            email: req.body.email,
-            username: req.body.username,
-            password: req.body.password
-        });
-        const registered = await registerUser.save();
+        const saveUser =new saveUser(username,email,password,isTerraformer);
+        const saved= await saveUser.save();
+        //const registered = await registerUser.save();
         res.status(201).render("login");
 
     }

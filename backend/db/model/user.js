@@ -1,4 +1,4 @@
-const mongo = require(".././../database")
+const mongo = require("../../database")
 let dbName = "job-board"
 let collectionName = "users"
 
