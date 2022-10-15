@@ -1,11 +1,11 @@
-const dotenv=require("dotenv")
-dotenv.config();
-const mongo=require("./database");
 const path = require('path');
 const express = require("express");
 var bodyparser = require('body-parser');
 const app = express();
 const hbs = require("hbs");
+const dotenv=require("dotenv")
+dotenv.config();
+const mongo=require("./database");
 // const DB = `mongodb://localhost:27017/jobopening`
 //const Register = require("./db/model/register");
 // const Register = require("./models/register");
@@ -27,9 +27,9 @@ const { emit } = require('process');
 const port = process.env.PORT || 3000;
 // const register = require('../src/models/register');
 
-const static_path = path.join(__dirname, "../frontend");
-const template_path = path.join(__dirname, "../frontend/templates/views");
-const partials_path = path.join(__dirname, "../frontend/templates/partials");
+const static_path = path.join(__dirname, "./frontend");
+const template_path = path.join(__dirname, "./frontend/templates/views");
+const partials_path = path.join(__dirname, "./frontend/templates/partials");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
