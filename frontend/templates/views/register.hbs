@@ -95,8 +95,8 @@
                     </div>
                       <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" name="isTerraformer" for="rememberMe">IsTerraformer</label>
+                        <input class="form-check-input" type="checkbox" name="isTerraformer" value="true" id="isTerraformer">
+                        <label class="form-check-label" name="isTerraformer" for="isTerraformer">IsTerraformer</label>
                       </div>
                     </div> 
 
@@ -108,7 +108,8 @@
                       </div> -->
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      
+                      <button class="btn btn-primary w-100" type="submit" id="signup" onclick="" >Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="login">Log in</a></p>
@@ -146,6 +147,34 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    const axios=require("axios")
+    document.getElementById("signup").addEventListener("click",()=>{
+      alert("test")
+      let name=document.getElementsByName("name")
+      console.log("-->",name)
+      let username=document.getElementsByName("username")
+      let email=document.getElementsByName("email")
+      let password=document.getElementsByName("password")
+      let isTerraformer=document.getElementsByName("isTerraformer")
+  const response = await axios('localhost:3000/users/signup', {
+    method: 'POST',
+    body:{
+      name,
+      username,
+      email,
+      password,
+      isTerraformer
+    } , // string or object
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const myJson = await response.json();
+  console.log(myJson) //extract JSON from the http response
+  // do something with myJson
+})
+  </script>
 
 </body>
 

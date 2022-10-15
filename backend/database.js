@@ -13,7 +13,7 @@ async function connect() {
 
     await client.connect();
     console.log("Connected to MongoDB Cluster");
-    return client
+    return this.client
   } catch (e) {
     throw e;
   }

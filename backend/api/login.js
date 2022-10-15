@@ -54,6 +54,7 @@ async function loginUser(req, res) {
 async function userSignup(req, res) {
     let routeName = `/users/signup`
     let { name, email,username, password, isTerraformer } = req.body
+    console.log(req.body)
     if (!username || !email || !password) {
         throw new Error("Parameter Missing")
     }

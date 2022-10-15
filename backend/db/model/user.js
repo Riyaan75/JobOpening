@@ -2,7 +2,7 @@ const mongo = require("../../database")
 let dbName = "job-board"
 let collectionName = "users"
 
-async function saveUsers(username, email, password, isTerraformer) {
+async function saveUsers(name,email,username, password, isTerraformer) {
     let client
     try {
         client = await mongo.mongoConnect();
