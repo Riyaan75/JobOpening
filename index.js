@@ -42,7 +42,7 @@ hbs.registerPartials(partials_path);
 //console.log(path.join(__dirname,"../../frontend/pages-register.html"));
 
 app.get("/", async (req, res) => {
-    res.render("index");
+    res.render("login");
 });
 
 
