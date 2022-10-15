@@ -1,10 +1,11 @@
+const env=require("dotenv").config();
 const path = require('path');
 const express = require("express");
 var bodyparser = require('body-parser');
 const app = express();
 const hbs = require("hbs");
 // const DB = `mongodb://localhost:27017/jobopening`
-require("./database");
+const mongo=require("./database");
 //const Register = require("./db/model/register");
 // const Register = require("./models/register");
 const User = require("./db/model/user");
@@ -90,6 +91,7 @@ app.post("/login", async (req, res) => {
     }
 })
 
-app.listen(port, () => {
+app.listen(port, async() => {
+    await mongo.connect();
     console.log(`server is running at port no ${port}`);
 });

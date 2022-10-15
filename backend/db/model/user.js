@@ -8,8 +8,9 @@ async function saveUsers(username, email, password, isTerraformer) {
         client = await mongo.mongoConnect();
         let db = await client.db(dbName).collection(collectionName);
         await db.insertOne({
-            username,
+            name,
             email,
+            username,
             password,
             isTerraformer,
             timestamp: Date.now()

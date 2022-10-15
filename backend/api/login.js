@@ -53,14 +53,14 @@ async function loginUser(req, res) {
 
 async function userSignup(req, res) {
     let routeName = `/users/signup`
-    let { username, email, password, isTerraformer } = req.body
+    let { name, email,username, password, isTerraformer } = req.body
     if (!username || !email || !password) {
         throw new Error("Parameter Missing")
     }
     if (!isTerraformer) { isTerraformer = false }
     password = cryptoJs.AES.encrypt(password, "hemantKumar").toString()
     try {
-        mongo.user.saveUsers(username, email, password, isTerraformer)
+        mongo.user.saveUsers(name, email,username, password, isTerraformer)
         res.status(200).send({
             message: "User Saved SuccessFully"
         })
