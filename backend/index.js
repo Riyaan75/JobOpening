@@ -1,11 +1,12 @@
-const env=require("dotenv").config();
+const dotenv=require("dotenv")
+dotenv.config();
+const mongo=require("./database");
 const path = require('path');
 const express = require("express");
 var bodyparser = require('body-parser');
 const app = express();
 const hbs = require("hbs");
 // const DB = `mongodb://localhost:27017/jobopening`
-const mongo=require("./database");
 //const Register = require("./db/model/register");
 // const Register = require("./models/register");
 const User = require("./db/model/user");

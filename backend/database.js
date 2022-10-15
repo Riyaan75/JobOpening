@@ -1,6 +1,7 @@
+require("dotenv").config()
 const mongo = require("mongodb");
-const uri = process.env["MONGO_DB_URI"];
-
+const uri = process.env.MONGO_DB_URI
+console.log(uri)
 async function connect() {
   let client;
   if (client) {
